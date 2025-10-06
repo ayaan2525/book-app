@@ -70,7 +70,8 @@ From the project root:
 You can access the interactive API documentation at http://127.0.0.1:8000/docs.
 
 ## API Endpoints
-Auth
+
+**Auth**
 
 **POST** */login*
 
@@ -83,6 +84,7 @@ Response:
 { "access_token": "<JWT>", "token_type": "bearer" }
 
 **Books**
+
 GET */books*
 
 List books with fields id, title, author, genre, and dynamically computed average_rating.
@@ -93,7 +95,7 @@ Query params:
 GET */books/{book_id}/reviews*
 Return all reviews for a book.
 
-Reviews
+**Reviews**
 
 POST */books/{book_id}/reviews*
 
