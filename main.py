@@ -2,6 +2,7 @@ import json
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from fastapi.responses import RedirectResponse
 
 from database import Base, SessionLocal, engine, get_db
 from models import Book
@@ -62,6 +63,10 @@ def get_book_service(
     return BookService(book_repo, review_repo)
 
 
+@app.get("/", include_in_schema=False)
+def index():
+    return RedirectResponse(url="/docs")
+    
 # Login and Token generation
 @app.post("/login", response_model=TokenResponse)
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
